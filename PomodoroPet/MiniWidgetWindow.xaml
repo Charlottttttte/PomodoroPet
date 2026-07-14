@@ -1,0 +1,62 @@
+<Window x:Class="PomodoroPet.MiniWidgetWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="番茄钟迷你屏"
+        Icon="Assets/icon.ico"
+        Width="168" Height="64"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Topmost="True"
+        ShowInTaskbar="False"
+        ResizeMode="NoResize"
+        SizeToContent="Manual">
+
+    <Border Background="#DD1B1B24" CornerRadius="12" BorderBrush="#4DFF8A65" BorderThickness="1.5"
+            MouseLeftButtonDown="Widget_MouseLeftButtonDown">
+        <Border.Effect>
+            <DropShadowEffect Color="Black" Opacity="0.35" BlurRadius="10" ShadowDepth="2"/>
+        </Border.Effect>
+        <Border.ContextMenu>
+            <ContextMenu>
+                <MenuItem Header="显示主界面" Click="ExpandButton_Click"/>
+                <MenuItem Header="退出" Click="ExitMenuItem_Click"/>
+            </ContextMenu>
+        </Border.ContextMenu>
+        <Grid Margin="10,6">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="FaceLabel" Grid.Column="0" Text="(•ω•)" FontFamily="Consolas" FontSize="15"
+                           FontWeight="Bold" Foreground="#FFA9C4" VerticalAlignment="Center"/>
+                <Button x:Name="ExpandButton" Grid.Column="1" Content="⛶" Width="20" Height="20"
+                        Background="Transparent" BorderThickness="0" Foreground="#FFCCBC"
+                        FontSize="12" Cursor="Hand" Click="ExpandButton_Click"
+                        ToolTip="展开主界面"/>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="🍅" FontSize="14" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                <TextBlock x:Name="TimeLabel" Grid.Column="1" Text="25:00" FontFamily="Consolas" FontSize="20"
+                           FontWeight="Bold" Foreground="#7CFC9A" VerticalAlignment="Center"/>
+                <TextBlock x:Name="StateTag" Grid.Column="2" Text="待机" FontSize="10"
+                           Foreground="#FFCCBC" VerticalAlignment="Bottom" Margin="4,0,0,2"/>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
